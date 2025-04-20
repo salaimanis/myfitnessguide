@@ -6,7 +6,7 @@
 
 A comprehensive 12-week system designed for personalized body transformation. This tracker includes phased workout plans, international nutrition strategies, and science-backed techniques, with a special focus on minimizing loose skin during weight loss.
 
-🔗 **Live Demo:** [**Access the Tracker Here**](https://yourusername.github.io)
+🔗 **Live Demo:** [**Access the Tracker Here**](https://salaimanis.github.io/myfitnessguide/)
 
 ---
 
@@ -69,7 +69,7 @@ This program integrates evidence-based principles for effective and safer result
 
 ## 🤸‍♀️ How to Use the Live Tracker
 
-1.  **Access the Tracker:** Visit the [Live Site](https://yourusername.github.io).
+1.  **Access the Tracker:** Visit the [Live Site](https://salaimanis.github.io/myfitnessguide/).
 2.  **Select Your Phase:** Click the corresponding tab (Phase 1, Phase 2, etc.) at the top.
 3.  **Follow Daily Workouts:** Perform the listed exercises for the day, focusing on proper form and technique as described.
 4.  **Track Nutrition:** Use the provided macro and calorie guidelines as a starting point, adjusting based on your needs and professional advice.
