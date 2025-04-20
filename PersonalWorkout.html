@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ultimate Body Transformation</title>
+  <style>
+    :root {
+      --primary: #4a6bff;
+      --secondary: #ff6b6b;
+      --accent: #6bff6b;
+      --dark: #2c3e50;
+      --light: #f8f9fa;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      color: #333;
+    }
+    .header {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .phase-tabs button, .week-tabs button {
+      padding: 0.7rem 1.5rem;
+      margin: 0.3rem;
+      border: none;
+      border-radius: 30px;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .phase-tabs button:hover, .week-tabs button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .phase-tabs button.active, .week-tabs button.active {
+      background: var(--secondary);
+    }
+    .tabs {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tab-content {
+      display: none;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+      border-top: 5px solid var(--primary);
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 0.8rem;
+      text-align: left;
+    }
+    th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    tr:hover {
+      background-color: #f1f3f5;
+    }
+    .notes {
+      background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      border-left: 5px solid #ffc107;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    .food-highlight {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      padding: 1.2rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border-left: 5px solid #2196f3;
+    }
+    .pro-tip {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border-left: 5px solid #4caf50;
+    }
+    .warning {
+      background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border-left: 5px solid #f44336;
+    }
+    h3, h4 {
+      color: var(--dark);
+      margin-top: 0;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    h3:after, h4:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--secondary);
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    li:before {
+      content: '•';
+      color: var(--secondary);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    .abs-section {
+      background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+      padding: 1rem;
+      border-radius: 10px;
+      margin: 1rem 0;
+      border-left: 5px solid #9c27b0;
+    }
+    .fat-loss-techniques {
+      background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin: 1.5rem 0;
+      border-left: 5px solid #00bcd4;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">🔥 Ultimate Body Transformation Program 🔥</div>
+
+  <div class="fat-loss-techniques">
+    <h3>🔬 Science-Based Fat Loss Techniques (All Phases)</h3>
+    <div class="pro-tip">
+      <strong>✅ Proven Methods to Minimize Loose Skin:</strong>
+      <ul>
+        <li><strong>Hydration:</strong> 4-5L water daily maintains skin elasticity</li>
+        <li><strong>Collagen Boost:</strong> 10g collagen peptides daily + vitamin C</li>
+        <li><strong>Controlled Weight Loss:</strong> Target 0.5-1kg/week max</li>
+        <li><strong>Resistance Training:</strong> Maintains muscle mass that fills skin</li>
+        <li><strong>Dry Brushing:</strong> Stimulates circulation & collagen production</li>
+        <li><strong>Cold Showers:</strong> 30-60 sec at end of shower tightens skin</li>
+      </ul>
+    </div>
+    <div class="pro-tip">
+      <strong>⚡ Metabolic Acceleration Techniques:</strong>
+      <ul>
+        <li><strong>NEAT Boost:</strong> Add 5,000+ steps/day (non-exercise activity)</li>
+        <li><strong>Fast Cardio:</strong> 3x45min fasted LISS weekly (walking incline)</li>
+        <li><strong>HIIT:</strong> 2x20min sessions/week (1:2 work:rest ratio)</li>
+        <li><strong>Protein Timing:</strong> 40g protein within 30min post-workout</li>
+        <li><strong>Thermic Foods:</strong> Ginger, cayenne, green tea with meals</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tabs phase-tabs">
+    <button onclick="showPhase('phase1')" class="active">Phase 1</button>
+    <button onclick="showPhase('phase2')">Phase 2</button>
+    <button onclick="showPhase('phase3')">Phase 3</button>
+    <button onclick="showPhase('phase4')">Maintenance</button>
+    <button onclick="showPhase('nutrition')">Nutrition Guide</button>
+  </div>
+
+  <div class="notes">
+    <strong>💎 Elite Transformation Tips:</strong><br>
+    - <strong>Rest Between Sets:</strong> 45–60 sec (fat burn zone)<br>
+    - <strong>Progressive Overload:</strong> Increase weights 2-5% weekly<br>
+    - <strong>Hydration:</strong> 4–5 liters/day | <strong>Protein:</strong> 2.2g/kg bodyweight<br>
+    - <strong>Cardio Protocol:</strong> Morning fasted walk (speed: 5.5–6.0 km/h incline: 5–8%)<br>
+    - <strong>Abs Blueprint:</strong> Do 10–15 mins daily (see ABS section below) 🔥<br>
+    - <strong>Recovery:</strong> 7-9h sleep + 10min daily mobility work<br>
+  </div>
+
+  <div class="abs-section">
+    <h3>💪 Daily ABS Protocol (All Phases)</h3>
+    <table>
+      <tr><th>Exercise</th><th>Sets/Reps</th><th>Technique</th><th>Rest Time</th></tr>
+      <tr><td>Hanging Leg Raise</td><td>3x12-15</td><td>Slow controlled motion, avoid swinging</td><td>30s</td></tr>
+      <tr><td>Cable Crunch</td><td>3x20</td><td>Kneeling, squeeze abs at bottom</td><td>30s</td></tr>
+      <tr><td>Plank</td><td>3x60s</td><td>Engage core, neutral spine</td><td>45s</td></tr>
+      <tr><td>Russian Twists</td><td>3x20/side</td><td>Weighted, full rotation</td><td>30s</td></tr>
+      <tr><td>Reverse Crunch</td><td>3x15</td><td>Lift hips off floor</td><td>30s</td></tr>
+    </table>
+    <p><strong>Pro Tip:</strong> Rotate exercises weekly to prevent adaptation. Increase difficulty progressively.</p>
+  </div>
+
+  <div id="phase1" class="tab-content active">
+    <div class="tabs week-tabs">
+      <button onclick="showWeek('week1')" class="active">Week 1</button>
+      <button onclick="showWeek('week2')">Week 2</button>
+      <button onclick="showWeek('week3')">Week 3</button>
+      <button onclick="showWeek('week4')">Week 4</button>
+    </div>
+    <div id="week1" class="tab-content active">
+      <h3>Phase 1 - Foundation & Fat Loss (Week 1)</h3>
+      <table>
+        <tr><th>Exercise</th><th>Sets/Reps</th><th>Technique</th><th>Rest Time</th></tr>
+        <tr><td colspan="4" style="background:#e3f2fd;font-weight:bold;">Monday: Upper Body + Cardio</td></tr>
+        <tr><td>Incline Bench Press</td><td>4x10</td><td>45° angle, control eccentric</td><td>60s</td></tr>
+        <tr><td>Lat Pulldown</td><td>4x12</td><td>Full ROM, squeeze lats</td><td>60s</td></tr>
+        <tr><td>DB Shoulder Press</td><td>4x10</td><td>Neutral grip, no arching</td><td>60s</td></tr>
+        <tr><td>Cable Curls</td><td>3x15</td><td>Constant tension</td><td>45s</td></tr>
+        <tr><td>Incline Walk</td><td>20min</td><td>5.5km/h, 8% incline</td><td>-</td></tr>
+        
+        <tr><td colspan="4" style="background:#e3f2fd;font-weight:bold;">Tuesday: Legs + Core</td></tr>
+        <tr><td>Leg Press</td><td>4x12</td><td>Feet low for quad focus</td><td>75s</td></tr>
+        <tr><td>Walking Lunges</td><td>3x20</td><td>Controlled steps</td><td>60s</td></tr>
+        <tr><td>Calf Raises</td><td>4x20</td><td>Full stretch at bottom</td><td>45s</td></tr>
+        <tr><td>Hanging Leg Raise</td><td>3x15</td><td>No swinging</td><td>30s</td></tr>
+        
+        <tr><td colspan="4" style="background:#e3f2fd;font-weight:bold;">Wednesday: Full Body HIIT</td></tr>
+        <tr><td>Kettlebell Swings</td><td>4x20</td><td>Hip hinge movement</td><td>30s</td></tr>
+        <tr><td>Goblet Squats</td><td>4x12</td><td>Deep squat, elbows inside knees</td><td>45s</td></tr>
+        <tr><td>Jump Rope</td><td>4x1min</td><td>Fast pace</td><td>30s</td></tr>
+        <tr><td>Mountain Climbers</td><td>4x30s</td><td>Core engaged</td><td>30s</td></tr>
+        
+        <tr><td colspan="4" style="background:#e3f2fd;font-weight:bold;">Thursday: Active Recovery</td></tr>
+        <tr><td>Incline Walk</td><td>45min</td><td>6% incline, 5.8km/h</td><td>-</td></tr>
+        
+        <tr><td colspan="4" style="background:#e3f2fd;font-weight:bold;">Friday: Push + Pull</td></tr>
+        <tr><td>Flat Bench Press</td><td>4x10</td><td>Full ROM, pause at chest</td><td>75s</td></tr>
+        <tr><td>Pull-ups</td><td>3x10</td><td>Full hang to chin over</td><td>60s</td></tr>
+        <tr><td>Cable Row</td><td>4x12</td><td>Squeeze shoulder blades</td><td>60s</td></tr>
+        <tr><td>Lateral Raise</td><td>3x15</td><td>Light weight, no momentum</td><td>45s</td></tr>
+        
+        <tr><td colspan="4" style="background:#e3f2fd;font-weight:bold;">Saturday: Leg Sculpt</td></tr>
+        <tr><td>Deadlifts</td><td>4x8</td><td>Neutral spine, hip drive</td><td>90s</td></tr>
+        <tr><td>Split Squats</td><td>3x12/leg</td><td>Controlled descent</td><td>60s</td></tr>
+        <tr><td>Glute Bridges</td><td>4x15</td><td>Squeeze at top</td><td>45s</td></tr>
+        <tr><td>Incline Walk</td><td>25min</td><td>7% incline, 5.5km/h</td><td>-</td></tr>
+        
+        <tr><td colspan="4" style="background:#e3f2fd;font-weight:bold;">Sunday: Rest</td></tr>
+        <tr><td>Optional Mobility</td><td>-</td><td>Foam roll + stretching</td><td>-</td></tr>
+      </table>
+    </div>
+    <div id="week2" class="tab-content">
+      <h3>Phase 1 - Week 2</h3>
+      <div class="pro-tip">
+        <strong>Progression Protocol:</strong>
+        <ul>
+          <li>Increase weights 5–10% on all lifts</li>
+          <li>Add 2 reps per set on bodyweight exercises</li>
+          <li>Increase walk duration to 25 minutes</li>
+          <li>Add 1 set to core exercises</li>
+          <li>Implement 2:1 breathing pattern (exhale on exertion)</li>
+        </ul>
+      </div>
+      <p>Maintain all exercises from Week 1 with increased intensity.</p>
+    </div>
+    <div id="week3" class="tab-content">
+      <h3>Phase 1 - Week 3</h3>
+      <div class="pro-tip">
+        <strong>Intensity Boost:</strong>
+        <ul>
+          <li>Reduce rest time to 45 seconds between sets</li>
+          <li>Increase walk duration to 30 minutes</li>
+          <li>Add drop sets to final set of each exercise</li>
+          <li>Implement tempo training (3-1-2 count)</li>
+          <li>Increase abs to 4 exercises daily</li>
+        </ul>
+      </div>
+    </div>
+    <div id="week4" class="tab-content">
+      <h3>Phase 1 - Week 4</h3>
+      <div class="pro-tip">
+        <strong>Peak Week:</strong>
+        <ul>
+          <li>Go heaviest on lifts with perfect form</li>
+          <li>30–35 minute cardio sessions</li>
+          <li>Add supersets for upper/lower body</li>
+          <li>Measure waist circumference weekly</li>
+          <li>Evaluate fat loss and adjust Phase 2 accordingly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="phase2" class="tab-content">
+    <h3>Phase 2 — Strength & Size (Week 5–8)</h3>
+    <div class="pro-tip">
+      <strong>Key Focus:</strong> Progressive overload with controlled fat loss to maintain muscle and skin elasticity
+    </div>
+    <table>
+      <tr><th>Exercise</th><th>Sets/Reps</th><th>Technique</th><th>Rest Time</th></tr>
+      <tr><td colspan="4" style="background:#e8f5e9;font-weight:bold;">Monday: Push Day</td></tr>
+      <tr><td>Bench Press</td><td>4x8</td><td>Arch back, leg drive</td><td>90s</td></tr>
+      <tr><td>Overhead Press</td><td>4x10</td><td>Bar to chin height</td><td>75s</td></tr>
+      <tr><td>Dips</td><td>3x15</td><td>Lean forward</td><td>60s</td></tr>
+      <tr><td>Tricep Extensions</td><td>3x12</td><td>Elbows in</td><td>45s</td></tr>
+      <tr><td>Incline Walk</td><td>15min</td><td>6% incline</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#e8f5e9;font-weight:bold;">Tuesday: Pull Day</td></tr>
+      <tr><td>Barbell Row</td><td>4x10</td><td>45° angle</td><td>90s</td></tr>
+      <tr><td>Pull-ups</td><td>3x10</td><td>Wide grip</td><td>75s</td></tr>
+      <tr><td>Face Pulls</td><td>3x15</td><td>External rotation</td><td>60s</td></tr>
+      <tr><td>Bicep Curls</td><td>3x15</td><td>Slow eccentric</td><td>45s</td></tr>
+      <tr><td>ABS Circuit</td><td>15min</td><td>See daily protocol</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#e8f5e9;font-weight:bold;">Wednesday: Legs</td></tr>
+      <tr><td>Back Squats</td><td>4x10</td><td>Below parallel</td><td>120s</td></tr>
+      <tr><td>Walking Lunges</td><td>3x20</td><td>Weighted</td><td>90s</td></tr>
+      <tr><td>Hamstring Curls</td><td>4x12</td><td>Full ROM</td><td>60s</td></tr>
+      <tr><td>Calf Raises</td><td>4x20</td><td>Pause at top</td><td>45s</td></tr>
+      
+      <tr><td colspan="4" style="background:#e8f5e9;font-weight:bold;">Thursday: Arms & Core</td></tr>
+      <tr><td>Hammer Curls</td><td>3x12</td><td>Neutral grip</td><td>45s</td></tr>
+      <tr><td>Skull Crushers</td><td>3x12</td><td>Elbows fixed</td><td>45s</td></tr>
+      <tr><td>Hanging Leg Raise</td><td>3x20</td><td>No momentum</td><td>30s</td></tr>
+      <tr><td>Cable Twists</td><td>3x15/side</td><td>Slow rotation</td><td>30s</td></tr>
+      <tr><td>Incline Walk</td><td>30min</td><td>7% incline</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#e8f5e9;font-weight:bold;">Friday: Core Focus</td></tr>
+      <tr><td>Weighted Planks</td><td>3x1min</td><td>20lb plate on back</td><td>45s</td></tr>
+      <tr><td>Russian Twists</td><td>3x20</td><td>25lb plate</td><td>30s</td></tr>
+      <tr><td>Bicycle Crunches</td><td>3x30</td><td>Slow and controlled</td><td>30s</td></tr>
+      <tr><td>HIIT Circuit</td><td>20min</td><td>30s on/1min off</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#e8f5e9;font-weight:bold;">Saturday: HIIT</td></tr>
+      <tr><td>Kettlebell Swings</td><td>5x20</td><td>Power from hips</td><td>30s</td></tr>
+      <tr><td>Battle Ropes</td><td>4x30s</td><td>Alternate waves</td><td>45s</td></tr>
+      <tr><td>Burpees</td><td>3x15</td><td>Full extension</td><td>45s</td></tr>
+      
+      <tr><td colspan="4" style="background:#e8f55e9;font-weight:bold;">Sunday: Active Rest</td></tr>
+      <tr><td>Yoga/Mobility</td><td>30-45min</td><td>Focus on tight areas</td><td>-</td></tr>
+    </table>
+  </div>
+
+  <div id="phase3" class="tab-content">
+    <h3>Phase 3 — Shredding & Core Reveal (Week 9–12)</h3>
+    <div class="warning">
+      <strong>Important:</strong> Maintain protein intake at 2.2g/kg bodyweight to preserve muscle during final fat loss phase
+    </div>
+    <table>
+      <tr><th>Exercise</th><th>Sets/Reps</th><th>Technique</th><th>Rest Time</th></tr>
+      <tr><td colspan="4" style="background:#f3e5f5;font-weight:bold;">Monday: Upper Body</td></tr>
+      <tr><td>Incline DB Bench</td><td>4x12</td><td>30° angle</td><td>60s</td></tr>
+      <tr><td>Lat Pulldown</td><td>4x15</td><td>Wide grip</td><td>60s</td></tr>
+      <tr><td>Side Raises</td><td>4x15</td><td>Partial reps at top</td><td>45s</td></tr>
+      <tr><td>ABS Circuit</td><td>20min</td><td>High intensity</td><td>-</td></tr>
+      <tr><td>LISS Cardio</td><td>30min</td><td>6% incline</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#f3e5f5;font-weight:bold;">Tuesday: Lower Body</td></tr>
+      <tr><td>Deadlifts</td><td>4x8</td><td>Conventional stance</td><td>120s</td></tr>
+      <tr><td>Bulgarian Split Squats</td><td>3x12/leg</td><td>Controlled tempo</td><td>75s</td></tr>
+      <tr><td>Seated Calf Raises</td><td>5x20</td><td>Full stretch</td><td>45s</td></tr>
+      <tr><td>HIIT Session</td><td>25min</td><td>1:1 work:rest</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#f3e5f5;font-weight:bold;">Wednesday: Core Intensive</td></tr>
+      <tr><td>Hanging Knee Raises</td><td>4x20</td><td>Slow negative</td><td>30s</td></tr>
+      <tr><td>Cable Woodchoppers</td><td>3x15/side</td><td>Full rotation</td><td>30s</td></tr>
+      <tr><td>Ab Wheel Rollouts</td><td>3x12</td><td>Keep core tight</td><td>45s</td></tr>
+      <tr><td>LISS Cardio</td><td>45min</td><td>5.5km/h, 8%</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#f3e5f5;font-weight:bold;">Thursday: Full Body</td></tr>
+      <tr><td>Clean & Press</td><td>4x10</td><td>Explosive movement</td><td>90s</td></tr>
+      <tr><td>Snatch Grip DL</td><td>3x8</td><td>Wide grip</td><td>120s</td></tr>
+      <tr><td>Thrusters</td><td>4x10</td><td>Squat to press</td><td>75s</td></tr>
+      
+      <tr><td colspan="4" style="background:#f3e5f5;font-weight:bold;">Friday: Upper + HIIT</td></tr>
+      <tr><td>Pull-ups</td><td>4x10</td><td>Various grips</td><td>60s</td></tr>
+      <tr><td>DB Bench Press</td><td>4x12</td><td>Neutral grip</td><td>75s</td></tr>
+      <tr><td>ABS Superset</td><td>20min</td><td>No rest</td><td>-</td></tr>
+      <tr><td>HIIT Circuit</td><td>20min</td><td>15s on/45s off</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#f3e5f5;font-weight:bold;">Saturday: Legs</td></tr>
+      <tr><td>Front Squats</td><td>4x10</td><td>Clean grip</td><td>120s</td></tr>
+      <tr><td>Romanian DL</td><td>4x12</td><td>Hamstring focus</td><td>90s</td></tr>
+      <tr><td>Step-ups</td><td>3x12/leg</td><td>24" box</td><td>60s</td></tr>
+      <tr><td>LISS Walk</td><td>25-30min</td><td>Fasted morning</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#f3e5f5;font-weight:bold;">Sunday: Optional</td></tr>
+      <tr><td>Core or Mobility</td><td>-</td><td>Listen to body</td><td>-</td></tr>
+    </table>
+  </div>
+
+  <div id="phase4" class="tab-content">
+    <h3>Maintenance Mode (Post 85kg)</h3>
+    <div class="pro-tip">
+      <strong>Maintenance Pro Tips:</strong>
+      <ul>
+        <li>Weigh daily, take weekly average</li>
+        <li>Adjust calories ±200 based on weekly trend</li>
+        <li>Maintain strength training 3x/week</li>
+        <li>Continue daily steps (8,000+ minimum)</li>
+        <li>Periodize nutrition (cut/bulk cycles)</li>
+      </ul>
+    </div>
+    <table>
+      <tr><th>Exercise</th><th>Sets/Reps</th><th>Technique</th><th>Rest Time</th></tr>
+      <tr><td colspan="4" style="background:#e0f7fa;font-weight:bold;">Monday: Full Body Strength</td></tr>
+      <tr><td>Squats</td><td>3x8</td><td>Heavy weight</td><td>120s</td></tr>
+      <tr><td>Bench Press</td><td>3x8</td><td>Progressive overload</td><td>90s</td></tr>
+      <tr><td>Rows</td><td>3x10</td><td>Strict form</td><td>90s</td></tr>
+      
+      <tr><td colspan="4" style="background:#e0f7fa;font-weight:bold;">Tuesday: Active Recovery</td></tr>
+      <tr><td>Sports/Walk</td><td>45-60min</td><td>Low intensity</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#e0f7fa;font-weight:bold;">Wednesday: Conditioning</td></tr>
+      <tr><td>Box Jumps</td><td>4x8</td><td>Explosive</td><td>60s</td></tr>
+      <tr><td>KB Swings</td><td>4x20</td><td>Power from hips</td><td>45s</td></tr>
+      <tr><td>Sled Push</td><td>4x40m</td><td>Heavy load</td><td>90s</td></tr>
+      
+      <tr><td colspan="4" style="background:#e0f7fa;font-weight:bold;">Thursday: Rest/Mobility</td></tr>
+      <tr><td>Yoga/Stretching</td><td>30min</td><td>Focus on tight areas</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#e0f7fa;font-weight:bold;">Friday: Strength + Core</td></tr>
+      <tr><td>Deadlifts</td><td>3x6</td><td>Heavy</td><td>150s</td></tr>
+      <tr><td>OH Press</td><td>3x8</td><td>Strict press</td><td>90s</td></tr>
+      <tr><td>Pull-ups</td><td>3x10</td><td>Weighted if needed</td><td>90s</td></tr>
+      <tr><td>ABS Circuit</td><td>15min</td><td>Maintenance level</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#e0f7fa;font-weight:bold;">Saturday: Cardio</td></tr>
+      <tr><td>HIIT or LISS</td><td>20-30min</td><td>Based on preference</td><td>-</td></tr>
+      
+      <tr><td colspan="4" style="background:#e0f7fa;font-weight:bold;">Sunday: Family Activity</td></tr>
+      <tr><td>Walk + Stretching</td><td>30-60min</td><td>Low intensity</td><td>-</td></tr>
+    </table>
+    <p><strong>Goal:</strong> Stay within 82–85kg. Track calories weekly. Keep abs engaged 3x/week minimum.</p>
+  </div>
+
+  <div id="nutrition" class="tab-content">
+    <h3>🔥 Scientific Nutrition Guide 🔥</h3>
+    
+    <div class="tabs week-tabs">
+      <button onclick="showNutritionTab('phase1-nutri')" class="active">Phase 1</button>
+      <button onclick="showNutritionTab('phase2-nutri')">Phase 2</button>
+      <button onclick="showNutritionTab('phase3-nutri')">Phase 3</button>
+      <button onclick="showNutritionTab('phase4-nutri')">Maintenance</button>
+    </div>
+
+    <div id="phase1-nutri" class="tab-content active">
+      <h4>PHASE 1: Fat Melting & Foundation (4 Weeks)</h4>
+      <div class="pro-tip">
+        <strong>Skin Protection Protocol:</strong> 10g collagen peptides + 500mg vitamin C daily with meals
+      </div>
+      <table>
+        <tr><th>Macro</th><th>%</th><th>Grams</th><th>Calories</th></tr>
+        <tr><td>Protein</td><td>35%</td><td>180g</td><td>720 kcal</td></tr>
+        <tr><td>Carbs</td><td>35%</td><td>180g</td><td>720 kcal</td></tr>
+        <tr><td>Fats</td><td>30%</td><td>70g</td><td>630 kcal</td></tr>
+      </table>
+      <p><strong>Total Calories:</strong> 2100 kcal/day (700 kcal deficit)</p>
+      <div class="food-highlight">
+        <strong>🎯 Food Sources:</strong>
+        <ul>
+          <li><strong>Protein:</strong> Eggs (4/day), soya chunks (50g dry), grilled fish (150g), dal (1 cup), whey (1 scoop)</li>
+          <li><strong>Carbs:</strong> Oats (50g), roti (2), sweet potato (150g), brown rice (1 cup)</li>
+          <li><strong>Fats:</strong> Peanut butter (1 tbsp), ghee (1 tsp), seeds (1 tbsp), egg yolks</li>
+        </ul>
+      </div>
+      <div class="food-highlight">
+        <strong>🍽️ Sample Day:</strong>
+        <ul>
+          <li><strong>Pre-Workout:</strong> Black coffee + 5g BCAA</li>
+          <li><strong>Breakfast:</strong> 4 boiled eggs + oats + flaxseeds</li>
+          <li><strong>Lunch:</strong> Fish curry (150g) + rice (1 cup) + veggies</li>
+          <li><strong>Snack:</strong> Roasted soya (30g) + green tea</li>
+          <li><strong>Dinner:</strong> Soya chunks (50g dry) + stir-fried veg + roti (1)</li>
+          <li><strong>Post-Workout:</strong> Whey shake + 5g creatine</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="phase2-nutri" class="tab-content">
+      <h4>PHASE 2: Strength & Shape (Weeks 5–8)</h4>
+      <div class="pro-tip">
+        <strong>Muscle Preservation:</strong> Leucine-rich meals every 3-4 hours (eggs, fish, whey)
+      </div>
+      <table>
+        <tr><th>Macro</th><th>%</th><th>Grams</th><th>Calories</th></tr>
+        <tr><td>Protein</td><td>35%</td><td>180g</td><td>720 kcal</td></tr>
+        <tr><td>Carbs</td><td>35%</td><td>190g</td><td>760 kcal</td></tr>
+        <tr><td>Fats</td><td>30%</td><td>75g</td><td>675 kcal</td></tr>
+      </table>
+      <p><strong>Total Calories:</strong> 2200–2300 kcal/day (500 kcal deficit)</p>
+      <div class="food-highlight">
+        <strong>🎯 Key Adjustments:</strong>
+        <ul>
+          <li>Add rice/sweet potato around workouts</li>
+          <li>Rotate eggs, fish, and soya daily</li>
+          <li>Increase nuts/seeds for healthy fats</li>
+          <li>Post-workout: 40g whey + 50g carbs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="phase3-nutri" class="tab-content">
+      <h4>PHASE 3: Shredding & Core Reveal (Weeks 9–12)</h4>
+      <div class="warning">
+        <strong>Caution:</strong> Don't drop calories below 2000 kcal/day to prevent muscle loss
+      </div>
+      <table>
+        <tr><th>Macro</th><th>%</th><th>Grams</th><th>Calories</th></tr>
+        <tr><td>Protein</td><td>40%</td><td>200g</td><td>800 kcal</td></tr>
+        <tr><td>Carbs</td><td>30%</td><td>150g</td><td>600 kcal</td></tr>
+        <tr><td>Fats</td><td>30%</td><td>67g</td><td>600 kcal</td></tr>
+      </table>
+      <p><strong>Total Calories:</strong> 2000–2100 kcal/day</p>
+      <div class="food-highlight">
+        <strong>⚡ Pro Tips:</strong>
+        <ul>
+          <li>Low-carb on rest days (80–100g carbs)</li>
+          <li>Fish + egg whites as base protein</li>
+          <li>Green tea/lemon water post-fasted cardio</li>
+          <li>Refeed every 10 days (increase carbs by 50g)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="phase4-nutri" class="tab-content">
+      <h4>MAINTENANCE (Post 85kg Lean Physique)</h4>
+      <div class="pro-tip">
+        <strong>Reverse Dieting:</strong> Increase calories by 100 kcal/week until stable
+      </div>
+      <table>
+        <tr><th>Macro</th><th>%</th><th>Grams</th><th>Calories</th></tr>
+        <tr><td>Protein</td><td>35%</td><td>185g</td><td>740 kcal</td></tr>
+        <tr><td>Carbs</td><td>40%</td><td>250g</td><td>1000 kcal</td></tr>
+        <tr><td>Fats</td><td>25%</td><td>65g</td><td>585 kcal</td></tr>
+      </table>
+      <p><strong>Total Calories:</strong> 2400–2500 kcal (maintenance)</p>
+      <div class="food-highlight">
+        <strong>🔄 Flexible Eating:</strong>
+        <ul>
+          <li>Protein: Fish/chicken/soya/paneer/eggs</li>
+          <li>Weekly treat meal to reset metabolism</li>
+          <li>Track food 80% of time, intuitive eating later</li>
+          <li>Adjust based on weekly weight average</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pro-tip" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);">
+      <strong>🔥 International Fat-Loss Nutrition Hacks:</strong>
+      <ul>
+        <li><strong>Japanese:</strong> Green tea + seaweed (fucoxanthin boosts fat oxidation)</li>
+        <li><strong>Mediterranean:</strong> Olive oil + vinegar dressing (increases satiety)</li>
+        <li><strong>Indian:</strong> Turmeric + black pepper (curcumin reduces inflammation)</li>
+        <li><strong>Nordic:</strong> Cold-water fish (omega-3s reduce fat storage)</li>
+        <li><strong>Brazilian:</strong> Guarana pre-workout (natural caffeine source)</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showPhase(phaseId) {
+      // Remove active class from all phase buttons
+      document.querySelectorAll('.phase-tabs button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      // Add active class to clicked button
+      event.target.classList.add('active');
+      
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.getElementById(phaseId).classList.add('active');
+      if (phaseId === 'phase1') showWeek('week1');
+      if (phaseId === 'nutrition') showNutritionTab('phase1-nutri');
+    }
+    function showWeek(weekId) {
+      // Remove active class from all week buttons
+      document.querySelectorAll('#phase1 .week-tabs button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      // Add active class to clicked button
+      event.target.classList.add('active');
+      
+      document.querySelectorAll('#phase1 .tab-content').forEach(el => el.classList.remove('active'));
+      document.getElementById(weekId).classList.add('active');
+    }
+    function showNutritionTab(tabId) {
+      // Remove active class from all nutrition buttons
+      document.querySelectorAll('#nutrition .week-tabs button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      // Add active class to clicked button
+      event.target.classList.add('active');
+      
+      document.querySelectorAll('#nutrition .tab-content').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
